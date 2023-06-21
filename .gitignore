@@ -1,4 +1,5 @@
 .env
 node_modules/
 packge-lock.json
-secrets.json
+config/
+sessions/

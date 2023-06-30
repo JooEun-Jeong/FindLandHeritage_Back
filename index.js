@@ -61,7 +61,7 @@ app.use('/auth', authRouter);
 app.get('/main/searchresult/:name', (req, res) => {
   const name = req.params.name;
 
-  let query = "SELECT * FROM landowner where name=\'" + name + "\' limit 0, 15;";
+  let query = "SELECT * FROM landowner where name=\'" + name + "\';";
   console.log("name ", name);
   connection.query(query, function (error, result, field) {
     if (error) {
@@ -70,6 +70,28 @@ app.get('/main/searchresult/:name', (req, res) => {
     if (result) {
       console.log(result);
       return res.json(result);
+    }
+  })
+})
+
+/**
+ * input:     front에서 넘어온 이름
+ * function:  db에서 input을 키워드로 검색하여 개수를 셈
+ * return:    개수 반환
+ */
+// 아직 체크 안 함
+app.get('/main/searchcount/:name', (req, res) => {
+  const name = req.params.name;
+
+  let query = "SELECT count(*) as number FROM landowner where name=\'" + name + "\';";
+  console.log("count entities with name: ", name);
+  connection.query(query, function (error, result, field) {
+    if (error) {
+      console.log(error);
+    }
+    if (result) {
+      console.log(result);
+      return res.send(result);
     }
   })
 })

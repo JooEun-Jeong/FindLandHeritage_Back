@@ -3,7 +3,50 @@
 ### 수행기간: 23.04 ~ 현재
 ### 프레임워크
 : express.js, MySQL
---------------
+--------------  
+### How to start  
+1. 필요한 라이브러리 설치하기
+``` bash
+npm install  
+```  
+2. config폴더 생성 및 awsSecrets.json라는 파일 생성  
+```json
+{
+  "local": {
+    "mysql": {
+      "host": "db url",
+      "user": "user name",
+      "password": "db password",
+      "database": "db name"
+    },
+    "port": "db port"
+  },
+  "prod": {
+    "mysql": {
+      "host": "",
+      "user": "",
+      "password": "",
+      "database": ""
+    },
+    "port": ""
+  }
+}
+
+```
+### 파일 구조  
+```
+  .
+  ├── config/
+  |   └── awsSecrets.json
+  ├── lib/
+  |   └── db.js
+  ├── node_modules/
+  ├── index.js
+  ├── package-lock.json/
+  ├── package.json/
+  ├── README.md/
+  └── .gitignore
+```
 ### 지원하는 기능
 #### 1) 조상 이름 검색기능
 - input:     조상의 이름

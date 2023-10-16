@@ -24,10 +24,6 @@ app.get('/', (req, res, next) => {
   res.send('Hello, Express');
 })
 
-app.get('/failed', (req, res) => {
-  res.send('login failed.');
-})
-
 // 검색 라우터
 /** input:    front에서 넘어온 이름 
  *  function: DB에서 input을 키워드로 검색

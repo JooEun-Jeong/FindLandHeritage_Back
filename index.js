@@ -47,10 +47,10 @@ app.get('/failed', (req, res)=> {
   res.send('login failed.');
 })
 
-let passport = require('./lib/passport')(app, connection);
+// let passport = require('./lib/passport')(app, connection);
 
 // 인증 라우터
-const authRouter = require('./routes/auth')(passport);
+const authRouter = require('./routes/auth')(connection);
 app.use('/auth', authRouter);
 
 // 검색 라우터
@@ -79,7 +79,6 @@ app.get('/main/searchresult/:name', (req, res) => {
  * function:  db에서 input을 키워드로 검색하여 개수를 셈
  * return:    개수 반환
  */
-// 아직 체크 안 함
 app.get('/main/searchcount/:name', (req, res) => {
   const name = req.params.name;
 
